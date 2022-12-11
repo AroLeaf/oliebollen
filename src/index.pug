@@ -1,0 +1,25 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='style.css')
+    title Ontmoetings-Oliebollen
+  body
+    h1 Ontmoetings-Oliebollen
+    .halved
+      div
+        h2 Prijs
+        p Ik heb op het moment van schrijven not geen prijs doorgekregen, check de website later weer.
+        form(action='/submit' method='post' enctype='application/x-www-form-urlencoded')
+          label
+            h4 Naam
+            input(type='text' name='name' required)
+          label
+            h4 Telefoonnummer
+            input(type='tel' name='phone' required)
+          label
+            h4 Aantal oliebollen
+            input(type='number' min='1' name='count' required)
+          button(type="submit") Bestelling Plaatsen
+      img(src='assets/oliebollen.png')

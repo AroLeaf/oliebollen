@@ -1,0 +1,12 @@
+{
+  "name": "ontmoetingsoliebollen",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@fastify/formbody": "^7.4.0",
+    "@fastify/static": "^6.6.0",
+    "dotenv": "^16.0.3",
+    "fastify": "^4.10.2",
+    "mongoose": "^6.8.0"
+  }
+}

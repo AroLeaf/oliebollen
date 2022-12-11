@@ -1,0 +1,77 @@
+html, h1, h2, h4, p, a, form, input {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  margin: 0px auto;
+  padding: 64px;
+  max-width: 1024px;
+  background-color: #333;
+  color: #fff;
+  font-family: sans-serif;
+}
+
+h1 {
+  font-size: 64px;
+  text-align: center;
+}
+
+.halved {
+  display: grid;
+  grid-template-columns: minmax(auto, 50%) 1fr;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+input {
+  border: none;
+  outline: none;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #444;
+  font-size: 24px;
+  color: #fff;
+}
+
+button, .button {
+  border: none;
+  outline: none;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #693;
+  font-size: 24px;
+  color: #fff;
+  width: fit-content;
+  cursor: pointer;
+  transition: .15s;
+}
+:is(button, .button):hover {
+  background-color: #7a3;
+}
+
+a.button {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  object-fit: contain;
+}
