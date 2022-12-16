@@ -22,6 +22,14 @@ html(lang='en')
             input(type='tel' name='phone' required)
           label
             h4 Aantal oliebollen
-            input(type='number' min='1' name='count' required)
+            input.count(type='number' min='1' name='count' required)
+          p Totaal: €#[span.price 0] 
           button(type="submit") Bestelling Plaatsen
+          script.
+            const input = document.querySelector('.count');
+            const price = document.querySelector('.price');
+            input.addEventListener('input', () => {
+              const count = +input.value;
+              price.innerText = count - Math.floor(count / 10);
+            });
       img(src='assets/oliebollen.png')
