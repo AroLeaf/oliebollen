@@ -16,11 +16,13 @@ fastify.post('/submit', async (request, reply) => {
     'name',
     'phone',
     'count',
+    'krenten',
   ].some(k => !(k in request.body))) return reply.code(400).send(new Error('Invalid form data'));
   await db.create({
     name: request.body.name,
     phone: request.body.phone,
     count: request.body.count,
+    krenten: equest.body.krenten,
   });
   return reply.sendFile('submitted.html');
 });
