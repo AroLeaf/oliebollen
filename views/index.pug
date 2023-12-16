@@ -7,13 +7,13 @@ html(lang='en')
     script(src='/scripts/hideAddress.js' defer)
     title Oliebollenactie Ontmoetingskerk
   body
-    h1 Oliebollenactie Ontmoetingskerk
-    .halved
-      main
+    main
+      h1 Oliebollenactie Ontmoetingskerk
         h2 Prijs
         ul
-          li TODO: nieuwe prijzen hier
-        
+          li Haafs oliebollen: €11 per zak van 5 naturel en 5 met krenten/rozijnen
+          li Huisgebakken nieuwjaarsrolletjes: €5 per zak van 25 nieuwjaarsrolletjes
+      .halved
         form(action='/orders' method='post' enctype='application/x-www-form-urlencoded')
           label
             h4 Naam
@@ -37,4 +37,4 @@ html(lang='en')
           p Totaal: €#[span.price 0]
           button(type="submit") Bestelling Plaatsen
       
-      img(src='/assets/oliebollen.png')
+        img(src='/assets/oliebollen.png')

@@ -1,8 +1,9 @@
 mixin table(items)
   .table
     each value, key in items
-      p= key
-      p= value
+      if value
+        p= key
+        p= value
 
 doctype html
 html(lang='en')
@@ -17,16 +18,19 @@ html(lang='en')
       each order in orders
         .order
           if order.cancelled
-            p.cancelled= order.name
-            a(href=`/orders/${order._id}`)= order._id
+            p.cancelled
+              | #{order.name} &nbsp;
+              a(href=`/orders/${order._id}`)= order._id
           else
             details
-              summary= order.name
+              summary
+                | #{order.name} &nbsp;
+                a(href=`/orders/${order._id}`)= order._id
               +table({
                 'Aantal zakken oliebollen': order.oliebollen,
                 'Aantal zakken nieuwjaarsrolletjes': order.rolletjes,
+                'Bezorgadres': order.isForDelivery && order.address,
               })
-            a(href=`/orders/${order._id}`)= order._id
 
       .table
         p Totale aantal oliebollen:

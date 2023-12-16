@@ -117,12 +117,6 @@ img {
   color: #693;
 }
 
-.order {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
 .hidden {
   display: none;
 }
