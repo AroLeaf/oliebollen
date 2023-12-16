@@ -1,0 +1,35 @@
+mixin table(items)
+  .table
+    each value, key in items
+      p= key
+      p= value
+
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/style.css')
+    title Oliebollenactie Ontmoetingskerk
+  body
+    main
+      h1 Oliebollenactie Ontmoetingskerk
+      each order in orders
+        .order
+          if order.cancelled
+            p.cancelled= order.name
+            a(href=`/orders/${order._id}`)= order._id
+          else
+            details
+              summary= order.name
+              +table({
+                'Aantal zakken oliebollen': order.oliebollen,
+                'Aantal zakken nieuwjaarsrolletjes': order.rolletjes,
+              })
+            a(href=`/orders/${order._id}`)= order._id
+
+      .table
+        p Totale aantal oliebollen:
+        p= orders.filter(order => !order.cancelled).reduce((a, v) => a + v.oliebollen, 0)
+        p Totale aantal nieuwjaarsrolletjes:
+        p= orders.filter(order => !order.cancelled).reduce((a, v) => a + v.rolletjes, 0)

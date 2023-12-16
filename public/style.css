@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
 html, h1, h2, h4, p, a, form, input {
   margin: 0px;
   padding: 0px;
@@ -9,11 +11,11 @@ body {
   max-width: 1024px;
   background-color: #333;
   color: #fff;
-  font-family: sans-serif;
+  font-family: 'Open Sans';
 }
 
 h1 {
-  font-size: 64px;
+  font-size: 48px;
   text-align: center;
 }
 
@@ -30,15 +32,27 @@ li {
   font-size: 24px;
 }
 
-p {
+p, summary {
   font-size: 24px;
 }
 
-form {
+a {
+  font-size: 24px;
+  color: #369;
+  text-decoration: none;
+}
+a:hover {
+  color: #37a;
+}
+
+main, form {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: 16px;
+}
+
+details[open] summary {
+  margin-bottom: 16px;
 }
 
 h4 {
@@ -65,17 +79,50 @@ button, .button {
   color: #fff;
   width: fit-content;
   cursor: pointer;
-  transition: .15s;
+  transition: background-color .15s;
 }
 :is(button, .button):hover {
   background-color: #7a3;
 }
 
-a.button {
-  text-decoration: none;
+:is(button, .button).negative {
+  background-color: #900;
+}
+:is(button, .button).negative:hover {
+  background-color: #a00;
 }
 
 img {
   width: 100%;
   object-fit: contain;
+}
+
+.table {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 16px;
+}
+.table > :nth-child(odd) {
+  text-align: right;
+}
+.table form {
+  text-align: left;
+}
+
+.cancelled {
+  color: #7f7f7f;
+}
+
+.collected {
+  color: #693;
+}
+
+.order {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hidden {
+  display: none;
 }

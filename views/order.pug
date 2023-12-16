@@ -1,0 +1,73 @@
+mixin table(items)
+  .table
+    each value, key in items
+      if value
+        p= key
+        p= value
+
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/style.css')
+    script(src='/scripts/hideAddress.js' defer)
+    title Oliebollenactie Ontmoetingskerk
+  body
+    main
+      h1 Oliebollenactie Ontmoetingskerk
+      
+      if order
+        if order.cancelled 
+          h2 Deze bestelling is geannuleerd
+          h4 Uw bestelling was als volgt:
+          +table({
+            Naam: order.name,
+            Email: order.email,
+            'Aantal zakken oliebollen': order.oliebollen,
+            'Aantal zakken nieuwjaarsrolletjes': order.rolletjes,
+            'Bezorgadres': order.isForDelivery && order.address,
+          })
+          form(action=`/orders/${id}` method='post' enctype='application/x-www-form-urlencoded')
+            input(type='hidden', name='cancelled', value='false')
+            button(type='submit') Bestelling alsnog plaatsen
+
+        else
+          h2 Bedankt voor uw bestelling!
+          h4 Uw bestelling is als volgt:
+          +table({
+            Naam: order.name,
+            Email: order.email,
+            'Aantal zakken oliebollen': order.oliebollen,
+            'Aantal zakken nieuwjaarsrolletjes': order.rolletjes,
+            'Bezorgadres': order.isForDelivery && order.address,
+          })
+
+          .table
+            details
+              summary.button Bestelling Weizigen
+              form(action=`/orders/${id}` method='post' enctype='application/x-www-form-urlencoded')
+                label
+                  h4 Aantal zakken oliebollen
+                  input.oliebollen(type='number' min='0' name='oliebollen' value=order.oliebollen required)
+                label
+                  h4 Aantal zakken nieuwjaarsrolletjes
+                  input.rolletjes(type='number' min='0' name='rolletjes' value=order.rolletjes required)
+                label
+                  h4.table
+                    input#isForDelivery(type='checkbox', name='isForDelivery' checked=order.isForDelivery)
+                    | Ik wil graag dat mijn bestellling bezorgd wordt
+                label#address
+                  h4 Adres
+                  input.address(type='text' name='address' value=order.address)
+                button(type="submit") Weizigingen Opslaan
+              
+            form(action=`/orders/${id}` method='post' enctype='application/x-www-form-urlencoded')
+              input(type='hidden', name='cancelled', value='true')
+              button(type="submit").negative Bestelling Annuleren
+      
+      else
+        h2 Bestelling niet gevonden
+        P.
+          Er is geen bestelling gevonden met id: #{id}.#[br]
+          Als dit een fout is, neem dan contact op met Jarco Zetstra (jarco.zetstra@gmail.com)

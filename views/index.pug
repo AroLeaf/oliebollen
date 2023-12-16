@@ -1,0 +1,40 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/style.css')
+    script(src='/scripts/hideAddress.js' defer)
+    title Oliebollenactie Ontmoetingskerk
+  body
+    h1 Oliebollenactie Ontmoetingskerk
+    .halved
+      main
+        h2 Prijs
+        ul
+          li TODO: nieuwe prijzen hier
+        
+        form(action='/orders' method='post' enctype='application/x-www-form-urlencoded')
+          label
+            h4 Naam
+            input(type='text' name='name' required)
+          label
+            h4 Emailadres
+            input(type='email' name='email' required)
+          label
+            h4 Aantal zakken oliebollen
+            input.oliebollen(type='number' min='0' name='oliebollen' value="0" required)
+          label
+            h4 Aantal zakken nieuwjaarsrolletjes
+            input.rolletjes(type='number' min='0' name='rolletjes' value="0" required)
+          label
+            h4.table
+              input#isForDelivery(type='checkbox', name='isForDelivery')
+              | Ik wil graag dat mijn bestelling bezorgd wordt
+          label#address
+            h4 Adres
+            input.rolletjes(type='text' name='address')
+          p Totaal: €#[span.price 0]
+          button(type="submit") Bestelling Plaatsen
+      
+      img(src='/assets/oliebollen.png')
