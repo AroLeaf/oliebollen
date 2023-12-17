@@ -120,3 +120,15 @@ img {
 .hidden {
   display: none;
 }
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 32px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .halved {
+    grid-template-columns: 1fr;
+  }
+}
