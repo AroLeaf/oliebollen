@@ -33,8 +33,18 @@ html(lang='en')
               | Ik wil graag dat mijn bestelling bezorgd wordt
           label#address
             h4 Adres
-            input.rolletjes(type='text' name='address')
-          p Totaal: €#[span.price 0]
+            input.address(type='text' name='address')
+          p Totaal: €#[span.total ...]
           button(type="submit") Bestelling Plaatsen
+
+          script.
+            const oliebollen = document.querySelector('.oliebollen');
+            const rolletjes = document.querySelector('.rolletjes');
+            const total = document.querySelector('.total');
+
+            const handler = () => total.innerHTML = +oliebollen.value * 11 + +rolletjes.value * 5
+
+            oliebollen.addEventListener('input', handler)
+            rolletjes.addEventListener('input', handler)
       
         img(src='/assets/oliebollen.png')
