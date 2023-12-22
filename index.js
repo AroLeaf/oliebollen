@@ -8,6 +8,7 @@ import 'dotenv/config.js';
 
 import db from './db/index.js';
 import schemas from './schemas.js';
+import mongoose from 'mongoose';
 
 
 function handleDefaults(body) {
@@ -54,12 +55,14 @@ fastify.get('/orders', async (request, reply) => {
 
 
 fastify.get('/orders/:id', async (request, reply) => {
+  if (!mongoose.Types.ObjectId.isValid(request.params.id)) return reply.redirect('/');
   const order = await db.findById(request.params.id);
   return reply.view('order.pug', { order: order.toObject(), id: request.params.id });
 });
 
 
 fastify.post('/orders/:id', { schema: schemas.patch }, async (request, reply) => {
+  if (!mongoose.Types.ObjectId.isValid(request.params.id)) return reply.code(404).send();
   await db.findByIdAndUpdate(request.params.id, handleDefaults(request.body));
   return reply.redirect(`/orders/${request.params.id}`);
 });
