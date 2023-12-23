@@ -34,6 +34,6 @@ html(lang='en')
 
       .table
         p Totale aantal oliebollen:
-        p= orders.filter(order => !order.cancelled).reduce((a, v) => a + v.oliebollen, 0)
+        p= orders.filter(order => !order.cancelled).reduce((a, v) => a + v.oliebollen * 10, 0)
         p Totale aantal nieuwjaarsrolletjes:
-        p= orders.filter(order => !order.cancelled).reduce((a, v) => a + v.rolletjes, 0)
+        p= orders.filter(order => !order.cancelled).reduce((a, v) => a + v.rolletjes * 25, 0)
