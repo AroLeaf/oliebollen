@@ -45,7 +45,7 @@ html(lang='en')
 
           .table
             details
-              summary.button Bestelling Weizigen
+              summary.button Bestelling Wijzigen
               form(action=`/orders/${id}` method='post' enctype='application/x-www-form-urlencoded')
                 label
                   h4 Aantal zakken oliebollen
@@ -60,7 +60,7 @@ html(lang='en')
                 label#address
                   h4 Adres
                   input.address(type='text' name='address' value=order.address)
-                button(type="submit") Weizigingen Opslaan
+                button(type="submit") Wijzigingen Opslaan
               
             form(action=`/orders/${id}` method='post' enctype='application/x-www-form-urlencoded')
               input(type='hidden', name='cancelled', value='true')
